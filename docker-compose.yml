@@ -9,7 +9,7 @@ nginx:
         - wordpress
     restart: always
 
-mysql:
+datastore:
     image: mariadb
     ports:
         - '33306:3306'
@@ -28,8 +28,8 @@ wordpress:
     environment:
         - WORDPRESS_DB_NAME=wpdb
         - WORDPRESS_TABLE_PREFIX=prefixe_
-        - WORDPRESS_DB_HOST=mysql
+        - WORDPRESS_DB_HOST=datastore
         - WORDPRESS_DB_PASSWORD=pass
     links:
-        - mysql
+        - datastore
     restart: always
